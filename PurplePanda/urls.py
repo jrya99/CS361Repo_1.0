@@ -28,5 +28,5 @@ urlpatterns = [
     path('home/viewdata.html/', DataView.as_view()),
     path('home/viewdata.html/createuser.html', CreateUser.as_view()),
     path('home/viewcourse.html', ViewCourses.as_view()),
-    path('home/viewcourse.html/createcourse.html', CreateCourse.as_view())
+    path('home/createcourse.html', CreateCourse.as_view())
 ]

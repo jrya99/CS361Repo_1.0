@@ -53,7 +53,7 @@ class CreateCourse(View):
         #p = request.POST.get('password')
         #r = request.POST.get('role')
         if n != '':  #or p != '' or r != '':
-            newCourse = Courses(name=n)#, password=p, role=r)
+            newCourse = Courses(courseName=n)#, password=p, role=r)
             newCourse.save()
         return redirect('/home/')
 
