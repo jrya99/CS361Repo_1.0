@@ -9,8 +9,10 @@ class Login(View):
 
     def post(self, request):
         bad_password = False
-
-        x = User.objects.get(name=request.POST['name'])
+        try:
+            x = User.objects.get(name=request.POST['name'])
+        except x.DoesNotExist:
+            return render(request, "login.html", {"message": "Error: User doesn't exist"})
         bad_password = (x.password != request.POST["password"])
 
         if bad_password:
