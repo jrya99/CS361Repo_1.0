@@ -1,10 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+     <meta name="viewport" content="width=device-width">
+    <link href="{% static 'css/loginstyle.css' %}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+    <nav class= "navbar">
+      <ul>
+        <li><a href= "home.html"> HOME</a></li>
+        <li><a href= "login.html"> Logout </a></li>
+      </ul>
+    </nav>
+
 <form action="" method="post">
     {% csrf_token %}
     <div class="table">
@@ -21,14 +31,14 @@
                     <td>Role: </td>
                         <td>
                             <input id= "Admin" type="radio" name="role" value="Admin">
-                              <label for="Admin">Admin</label>
-                                <br>
-                              <input id= "TA" type="radio" name="role" value="TA">
-                              <label for="instructor">Instructor</label>
-                                <br>
-                              <input id= "TA" type="radio" name="role" value="TA">
-                              <label for="TA">TA</label>
-                            </td>
+                            <label for="Admin">Admin</label>
+                            <br>
+                            <input id= "TA" type="radio" name="role" value="TA">
+                            <label for="instructor">Instructor</label>
+                            <br>
+                            <input id= "TA" type="radio" name="role" value="TA">
+                            <label for="TA">TA</label>
+                     </td>
                 </tr>
             </table>
         <input type="submit" value="Create">

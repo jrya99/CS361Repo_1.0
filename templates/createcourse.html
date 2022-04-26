@@ -1,10 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Create Course</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="{% static 'css/loginstyle.css' %}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+    <nav class= "navbar">
+      <ul>
+        <li><a href= "home.html"> HOME</a></li>
+        <li><a href= "login.html"> Logout </a></li>
+      </ul>
+    </nav>
 
 <form action="" method="post">
     {% csrf_token %}

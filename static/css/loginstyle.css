@@ -9,10 +9,17 @@
 	font-family: serif, Georgia;
 }
 
+.header2{
+	alignment: left;
+	color:white;
+}
+
 body {
 	background-image: url("/static/Images/Purple-Background.jpg");
 	border-style:none;
 }
+
+
 
 p {
 	font-size:30px;

@@ -8,7 +8,14 @@
     <link href="{% static 'css/loginstyle.css' %}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<h1>Users</h1>
+    <nav class= "navbar">
+      <ul>
+        <li><a href= "home.html"> HOME</a></li>
+        <li><a href= "login.html"> Logout </a></li>
+      </ul>
+    </nav>
+
+<h1 class="header2">Users</h1>
     <form action="/users/" method="post">
         <a href="createuser.html">Create New User</a>
     </form>
