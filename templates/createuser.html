@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/createuser/" method="post">
+    {% csrf_token %}
+    <div class="table">
+            <table class="loginTable">
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="text" name="password"></td>
+                </tr>
+                <tr>
+                    <td>role: </td>
+                    <td><input type="text" name="role"></td>
+                </tr>
+            </table>
+        <input type="submit" value="Create">
+    </div>
+</form>
+</body>
+</html>

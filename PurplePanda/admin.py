@@ -16,9 +16,24 @@ class Admin(Parent):
 
 class DataView(View):
     def get(self, request):
-        return render(request, "ViewData.html", {})
+        x = list(User.objects.all())
+        return render(request, "viewdata.html", {'print':x})
 
     def post(self, request):
-        return render(request, "ViewData.html", {"print": User.objects.all()})
+        return render(request, "viewdata.html", {})
+
+
+class CreateUser(View):
+    def get(self, request):
+        return render(request, "createuser.html", {})
+
+    def post(self, request):
+        n = request.POST.get('name')
+        p = request.POST.get('password')
+        r = request.POST.get('role')
+        if n != '' or p != '' or r != '':
+            newUser = User(name=n, password=p, role=r)
+            newUser.save()
+        return redirect("/users/")
 
 

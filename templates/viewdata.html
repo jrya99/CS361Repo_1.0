@@ -8,9 +8,16 @@
     <link href="{% static 'css/loginstyle.css' %}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<form action="/Users" method="post">
-    {{ print }}
-</form>
+    <form action="/users/" method="post">
+        <a href="createuser.html">Create New User</a>
+    </form>
+    <div class="users">
+       {% for i in print %}
+            {{ i.name }}<br/>
+       {% endfor %}
+    </div>
+
+
 
 </body>
 </html>

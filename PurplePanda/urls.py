@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from PurplePanda.login import Login, Home, Courses
-from PurplePanda.admin import DataView
+from PurplePanda.admin import DataView, CreateUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +25,6 @@ urlpatterns = [
     path('home/login.html', Login.as_view()),
     path('home/home.html', Home.as_view()),
     path('home/courses.html', Courses.as_view()),
+    path('home/viewdata.html/', DataView.as_view()),
+    path('home/viewdata.html/createuser.html', CreateUser.as_view()),
 ]
