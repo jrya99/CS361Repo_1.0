@@ -3,22 +3,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <title>Courses</title>
     <meta name="viewport" content="width=device-width">
     <link href="{% static 'css/loginstyle.css' %}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<h1>Users</h1>
-    <form action="/users/" method="post">
-        <a href="createuser.html">Create New User</a>
+<h1>Courses</h1>
+    <form action="/courses/" method="post">
+        <a href="createcourse.html">Create New Course</a>
     </form>
     <div class="users">
        {% for i in print %}
             {{ i.name }}<br/>
        {% endfor %}
     </div>
-
-
 
 </body>
 </html>

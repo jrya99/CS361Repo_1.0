@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Course</title>
+</head>
+<body>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="table">
+            <table class="loginTable">
+                <tr>
+                    <td>Course Name: </td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+            </table>
+        <input type="submit" value="Create">
+    </div>
+</form>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/createuser/" method="post">
+<form action="" method="post">
     {% csrf_token %}
     <div class="table">
             <table class="loginTable">
@@ -18,8 +18,17 @@
                     <td><input type="text" name="password"></td>
                 </tr>
                 <tr>
-                    <td>role: </td>
-                    <td><input type="text" name="role"></td>
+                    <td>Role: </td>
+                        <td>
+                            <input id= "Admin" type="radio" name="role" value="Admin">
+                              <label for="Admin">Admin</label>
+                                <br>
+                              <input id= "TA" type="radio" name="role" value="TA">
+                              <label for="instructor">Instructor</label>
+                                <br>
+                              <input id= "TA" type="radio" name="role" value="TA">
+                              <label for="TA">TA</label>
+                            </td>
                 </tr>
             </table>
         <input type="submit" value="Create">
