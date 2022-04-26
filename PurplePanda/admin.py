@@ -34,6 +34,6 @@ class CreateUser(View):
         if n != '' or p != '' or r != '':
             newUser = User(name=n, password=p, role=r)
             newUser.save()
-        return redirect("/users/")
+        return redirect(DataView.as_view())
 
 
