@@ -61,7 +61,10 @@ class CreateUser(View):
 
 class ViewCourses(View):
     def get(self, request):
-        x = list(Courses.objects.all())
+        try:
+            x = list(Courses.objects.all())
+        except AttributeError:
+            return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
         return render(request, "viewcourse.html", {"print": x})
 
     def post(self, request):
