@@ -1,7 +1,4 @@
 from PurplePanda.parent import Parent
-from django.views import View
-from django.shortcuts import render, redirect
-from PurplePanda.models import User, Courses
 
 
 class Admin(Parent):
@@ -13,48 +10,5 @@ class Admin(Parent):
     def create_class(self, class_id, class_name):
         pass
 
-
-class DataView(View):
-    def get(self, request):
-        x = list(User.objects.all())
-        return render(request, "viewdata.html", {'print':x})
-
-    def post(self, request):
-        return render(request, "viewdata.html", {})
-
-
-class CreateUser(View):
-    def get(self, request):
-        return render(request, "createuser.html", {})
-
-    def post(self, request):
-        n = request.POST.get('name')
-        p = request.POST.get('password')
-        r = request.POST.get('role')
-        if n != '' or p != '' or r != '':
-            newUser = User(name=n, password=p, role=r)
-            newUser.save()
-        return redirect('/home/')
-
-class ViewCourses(View):
-    def get(self, request):
-        x = list(Courses.objects.all())
-        return render(request, "viewcourse.html", {"print": x})
-
-    def post(self, request):
-        return render(request, "viewcourse.html", {})
-
-class CreateCourse(View):
-    def get(self, request):
-        return render(request, "createcourse.html", {})
-
-    def post(self, request):
-        n = request.POST.get('name')
-        #p = request.POST.get('password')
-        #r = request.POST.get('role')
-        if n != '':  #or p != '' or r != '':
-            newCourse = Courses(courseName=n)#, password=p, role=r)
-            newCourse.save()
-        return redirect('/home/')
-
-
+    def data_view(self):
+        pass
