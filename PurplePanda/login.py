@@ -27,8 +27,8 @@ class Login(View):
 
 class Home(View):
     def get(self, request):
-        x = request.session["name"]
         return render(request, "../static/../templates/home.html", {})
+
 
 class Courses(View):
     def get(self, request):
