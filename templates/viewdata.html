@@ -15,17 +15,16 @@
       </ul>
     </nav>
 
-<h1 class="header2">Users</h1>
+    <h1 class="header2">Users</h1>
+
     <form action="/users/" method="post">
-        <a href="createuser.html">Create New User</a>
+        <a class="create" href="createuser.html">Create New User</a>
     </form>
     <div class="users">
        {% for i in print %}
-            {{ i.name }}<br/>
+            {{ i.name }}<br/><br>
        {% endfor %}
     </div>
-
-
 
 </body>
 </html>

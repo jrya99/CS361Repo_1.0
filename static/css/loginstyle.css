@@ -12,6 +12,7 @@
 .header2{
 	alignment: left;
 	color:white;
+	padding:20px;
 }
 
 body {
@@ -19,6 +20,17 @@ body {
 	border-style:none;
 }
 
+.users{
+	padding:20px;
+	font-size:25px;
+	color:white;
+}
+
+.create{
+	padding:20px;
+	font-size:25px;
+	color:sandybrown;
+}
 
 
 p {
@@ -63,7 +75,7 @@ tr,td{
 .navbar li{
   display: inline-block;
   margin-right: 30px;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 img {
