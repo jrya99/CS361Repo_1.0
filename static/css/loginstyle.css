@@ -1,6 +1,6 @@
 .header {
-	background-color: white;
-	color: purple;
+	background-color: purple;
+	color: white;
 	border-style:none;
 	text-align: center;
 	font-weight: bold;
@@ -10,7 +10,7 @@
 }
 
 body {
-	background-image: url("Images/Purple-Background.jpg");
+	background-image: url("../../templates/Images/Purple-Background.jpg");
 	border-style:none;
 }
 
