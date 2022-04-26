@@ -77,7 +77,10 @@ class CreateCourse(View):
 
     def post(self, request):
         n = request.POST.get('name')
+        s = request.POST.get('section')
+        i = request.POST.get('instruct')
+        t = request.POST.get('ta')
         if n != '':
-            newCourse = Courses(courseName=n)
+            newCourse = Courses(courseName=n, courseSection=s, courseInstructor=i, courseTA=t)
             newCourse.save()
         return redirect('/home/')
