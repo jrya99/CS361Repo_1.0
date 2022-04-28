@@ -39,10 +39,10 @@ class Courses(View):
 class DataView(View):
     def get(self, request):
         x = list(User.objects.all())
-        return render(request, "viewdata.html", {'print':x})
+        return render(request, "viewuser.html", {'print': x})
 
     def post(self, request):
-        return render(request, "viewdata.html", {})
+        return render(request, "viewuser.html", {})
 
 
 class CreateUser(View):
@@ -53,10 +53,12 @@ class CreateUser(View):
         n = request.POST.get('name')
         p = request.POST.get('password')
         r = request.POST.get('role')
+        x = request.POST.get('phone')
+        y = request.POST.get('address')
         if n != '' or p != '' or r != '':
-            newUser = User(name=n, password=p, role=r)
+            newUser = User(name=n, password=p, role=r, phoneNumber=x, address=y)
             newUser.save()
-        return redirect('/home/')
+        return redirect('/home/viewuser.html')
 
 
 class ViewCourses(View):
