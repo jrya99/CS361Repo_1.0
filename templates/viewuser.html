@@ -17,7 +17,7 @@
 
     <h1 class="header2">Users</h1>
 
-    {% if current.role == "admin" %}
+    {% if current.role == "admin" or current.role == "Admin" %}
         <a class="create" href="/createuser/">Create New User</a>
     {% endif %}
     <div class="users">

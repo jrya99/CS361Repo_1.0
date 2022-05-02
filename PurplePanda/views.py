@@ -40,6 +40,8 @@ class DataView(View):
     def get(self, request):
         x = list(MyUser.objects.all())
         temp = request.session.get("name")
+        temp = MyUser.objects.get(name=temp)
+        print(temp.role)
         return render(request, "viewuser.html", {'print': x, 'current': temp})
 
     def post(self, request):
