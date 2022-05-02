@@ -39,7 +39,8 @@ class Courses(View):
 class DataView(View):
     def get(self, request):
         x = list(User.objects.all())
-        return render(request, "viewuser.html", {'print': x})
+        temp = request.session.get("user")
+        return render(request, "viewuser.html", {'print': x, 'current': temp})
 
     def post(self, request):
         return render(request, "viewuser.html", {})
