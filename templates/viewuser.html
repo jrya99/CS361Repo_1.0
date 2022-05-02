@@ -16,10 +16,9 @@
     </nav>
 
     <h1 class="header2">Users</h1>
+
     {% if current.role == "admin" %}
-    <form action="/users/" method="post">
-        <a class="create" href="createuser.html">Create New User</a>
-    </form>
+        <a class="create" href="/createuser/">Create New User</a>
     {% endif %}
     <div class="users">
     <div class="table">

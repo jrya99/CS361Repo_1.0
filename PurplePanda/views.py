@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from PurplePanda.models import User, Courses
+from PurplePanda.models import MyUser, MyCourses
 
 
 class Login(View):
@@ -9,10 +9,10 @@ class Login(View):
 
     def post(self, request):
         bad_password = False
-        #try:
-        x = User.objects.get(name=request.POST['name'])
-        #except x.DoesNotExist:
-            #return render(request, "../static/../templates/login.html", {"message": "Error: User doesn't exist"})
+        try:
+            x = MyUser.objects.get(name=request.POST['name'])
+        except x.DoesNotExist:
+            return render(request, "../static/../templates/login.html", {"message": "Error: User doesn't exist"})
         bad_password = (x.password != request.POST["password"])
 
         if bad_password:
@@ -38,8 +38,8 @@ class Courses(View):
 
 class DataView(View):
     def get(self, request):
-        x = list(User.objects.all())
-        temp = request.session.get("user")
+        x = list(MyUser.objects.all())
+        temp = request.session.get("name")
         return render(request, "viewuser.html", {'print': x, 'current': temp})
 
     def post(self, request):
@@ -57,16 +57,15 @@ class CreateUser(View):
         x = request.POST.get('phone')
         y = request.POST.get('address')
         if n != '' or p != '' or r != '':
-            newUser = User(name=n, password=p, role=r, phoneNumber=x, address=y)
+            newUser = MyUser(name=n, password=p, role=r, phoneNumber=x, address=y)
             newUser.save()
         return redirect('/home/viewuser.html')
 
 
 class ViewCourses(View):
     def get(self, request):
-        try:
-            x = list(Courses.objects.all())
-        except AttributeError:
+        x = list(MyCourses.objects.all())
+        if x is None:
             return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
         return render(request, "viewcourse.html", {"print": x})
 
@@ -80,10 +79,10 @@ class CreateCourse(View):
 
     def post(self, request):
         n = request.POST.get('name')
-        s = request.POST.get('section')
+        s = int(request.POST.get('section'))
         i = request.POST.get('instruct')
         t = request.POST.get('ta')
         if n != '':
-            newCourse = Courses(courseName=n, courseSection=s, courseInstructor=i, courseTA=t)
+            newCourse = MyCourses(courseName=n, courseSection=s, courseInstructor=i, courseTA=t)
             newCourse.save()
-        return redirect('/home/')
+            return redirect('/home/viewcourse.html')

@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class User(models.Model):
+class MyUser(models.Model):
     name = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     role = models.CharField(max_length=20)
@@ -12,7 +12,7 @@ class User(models.Model):
         return self.name, self.password, self.role
 
 
-class Courses(models.Model):
+class MyCourses(models.Model):
     courseName = models.CharField(max_length=20)
     courseSection = models.IntegerField(default=0)
     courseInstructor = models.CharField(max_length=50, default=None)
