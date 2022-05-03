@@ -10,20 +10,31 @@
 <body>
     <nav class= "navbar">
       <ul>
-        <li><a href= "home.html"> HOME</a></li>
+        <li><a href= "/home"> HOME</a></li>
         <li><a href= "login.html"> Logout </a></li>
       </ul>
     </nav>
 
     <h1 class="header2">Courses</h1>
 
-    <form action="/courses/" method="post">
-        <a  class="create" href="createcourse.html">Create New Course</a>
-    </form>
+    <a  class="create" href="createcourse.html">Create New Course</a>
     <div class="users">
-       {% for i in print %}
-            {{ i.courseName }}<br/>
-       {% endfor %}
+        <table class="loginTable">
+                <tr>
+                    <td>Course Name: </td>
+                    <td>Course Section: </td>
+                    <td>Course Instructor: </td>
+                    <td>Section TA: </td>
+                </tr>
+            {% for i in print %}
+                <tr>
+                    <td>{{ i.courseName }}</td>
+                    <td>{{ i.courseSection }}</td>
+                    <td>{{ i.courseInstructor }}</td>
+                    <td>{{ i.courseTA }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 
 </body>

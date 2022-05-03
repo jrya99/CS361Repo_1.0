@@ -44,6 +44,15 @@ class DataView(View):
         print(temp.role)
         return render(request, "viewuser.html", {'print': x, 'current': temp})
 
+    def userDelete(self, request):
+        temp = request.session.get("name")
+        temp = MyUser.objects.get(name=temp)
+
+        if request.method == 'POST':
+            temp.delete()
+            return redirect('home/viewuser.html')
+        return
+
     def post(self, request):
         return render(request, "viewuser.html", {})
 
