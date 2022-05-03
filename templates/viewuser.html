@@ -18,7 +18,7 @@
     <h1 class="header2">Users</h1>
 
     {% if current.role == "admin" or current.role == "Admin" %}
-        <a class="create" href="/createuser/">Create New User</a>
+        <a class="create" href="/createuser">Create New User</a>
     {% endif %}
     <div class="users">
     <div class="table">
@@ -36,7 +36,7 @@
                     <td>{{ i.role }}</td>
                     <td>{{ i.phoneNumber }}</td>
                     <td>{{ i.address }}</td>
-                    <td><a href="createuser.html">Edit</a>&nbsp&nbsp<a href="">Delete</a></td>
+                    <td><a href="/createuser">Edit</a>&nbsp&nbsp<a href="">Delete</a></td>
                 </tr>
             {% endfor %}
             </table>

@@ -21,11 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Login.as_view()),
     path('home/', Home.as_view()),
-    path('home/login.html', Login.as_view()),
-    path('home/home.html', Home.as_view()),
-    path('home/courses.html', Courses.as_view()),
-    path('home/viewuser.html/', DataView.as_view()),
+    path('courses/', Courses.as_view()),
+    path('viewuser/', DataView.as_view()),
     path('createuser/', CreateUser.as_view()),
-    path('home/viewcourse.html', ViewCourses.as_view()),
-    path('home/createcourse.html', CreateCourse.as_view())
+    path('viewcourse/', ViewCourses.as_view()),
+    path('createcourse/', CreateCourse.as_view())
 ]
