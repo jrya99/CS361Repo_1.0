@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from PurplePanda.models import MyUser, MyCourses
+from django.shortcuts import HttpResponse
 
 
 class Login(View):
@@ -8,6 +9,7 @@ class Login(View):
         return render(request, "../static/../templates/login.html", {})
 
     def post(self, request):
+        print('hi')
         bad_password = False
         try:
             x = MyUser.objects.get(name=request.POST['name'])
@@ -38,23 +40,27 @@ class Courses(View):
 
 class DataView(View):
     def get(self, request):
+        print('hi4')
         x = list(MyUser.objects.all())
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
-        print(temp.role)
+        #print(temp.role)
         return render(request, "viewuser.html", {'print': x, 'current': temp})
 
-    def userDelete(self, request):
+    def post(self, request):
+        print('hi3')
+        search = request.POST.get('n')
+        print(search)
+        try:
+            user = MyUser.objects.get(name=search)
+            MyUser.objects.filter(name=search).delete()
+        except MyUser.DoesNotExist:
+            return HttpResponse("No such user")
+        x = list(MyUser.objects.all())
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
-
-        if request.method == 'POST':
-            temp.delete()
-            return redirect('home/viewuser.html')
-        return
-
-    def post(self, request):
-        return render(request, "viewuser.html", {})
+        # print(temp.role)
+        return render(request, "viewuser.html", {'print': x, 'current': temp})
 
 
 class CreateUser(View):

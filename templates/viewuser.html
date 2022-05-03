@@ -39,6 +39,14 @@
                     <td><a href="/createuser">Edit</a>&nbsp&nbsp<a href="">Delete</a></td>
                 </tr>
             {% endfor %}
+            <form action="/viewuser/" method="post">
+                {% csrf_token %}
+                <tr>
+                    <td>Delete User: </td>
+                    <td><input type="text" name="n"></td>
+                    <td><button type = "submit">Confirm Deletion</button></td>
+                </tr>
+            </form>
             </table>
         </div>
     </div>
