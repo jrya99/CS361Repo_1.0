@@ -73,10 +73,17 @@ class CreateUser(View):
         r = request.POST.get('role')
         x = request.POST.get('phone')
         y = request.POST.get('address')
-        if n != '' or p != '' or r != '':
-            newUser = MyUser(name=n, password=p, role=r, phoneNumber=x, address=y)
-            newUser.save()
-        return redirect('/home/viewuser.html')
+        try:
+            user = MyUser.objects.get(name=n)
+            return render(request, 'createuser.html', {'message': "User already exists"})
+        except MyUser.DoesNotExist:
+            if n != '' or p != '' or r != '':
+                newUser = MyUser(name=n, password=p, role=r, phoneNumber=x, address=y)
+                newUser.save()
+                x = list(MyUser.objects.all())
+                temp = request.session.get("name")
+                temp = MyUser.objects.get(name=temp)
+                return render(request,'viewuser.html',{'print':x,'current':temp})
 
 
 class ViewCourses(View):
@@ -102,4 +109,4 @@ class CreateCourse(View):
         if n != '':
             newCourse = MyCourses(courseName=n, courseSection=s, courseInstructor=i, courseTA=t)
             newCourse.save()
-            return redirect('/home/viewcourse.html')
+            return redirect('viewcourse.html')
