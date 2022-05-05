@@ -1,10 +1,10 @@
 .header {
 	background-color:white ;
-	color: purple;
+	color: rgb(40,10,90);
 	border-style:none;
 	text-align: center;
 	font-weight: bold;
-	font-size: 30px;
+	font-size: 50px;
 	padding:5px;
 	font-family: serif, Georgia;
 }
@@ -13,10 +13,11 @@
 	alignment: left;
 	color:white;
 	padding:20px;
+	font-family: serif, Georgia;
 }
 
 body {
-	background-image: url("/static/Images/Purple-Background.jpg");
+	background-color: rgb(40,10,90);
 	border-style:none;
 }
 
@@ -39,7 +40,7 @@ p {
 }
 
 tr,td{
-	padding:12px;
+	padding:20px;
 }
 
 .loginTable {
@@ -50,17 +51,19 @@ tr,td{
 	font-size: 30px;
 }
 
-.button {
+.btn {
 	background-color: rebeccapurple;
   	border-color: white;
-	padding:10px;
-	margin:auto;
-  	text-align: center;
-  	font-size: 25px;
-	width:120px;
-	border-radius: 12px;
 	border-style: solid;
+	font-family: Arial, sans-serif;
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	padding:20px;
+	width:180px;
 }
+
+
 
 .navbar{
 	background-color: white;
