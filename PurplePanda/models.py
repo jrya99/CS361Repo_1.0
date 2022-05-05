@@ -14,9 +14,15 @@ class MyUser(models.Model):
 
 class MyCourses(models.Model):
     courseName = models.CharField(max_length=20)
-    courseSection = models.IntegerField(default=0)
+    courseSection = models.CharField(max_length=20)
     courseInstructor = models.CharField(max_length=50, default=None)
     courseTA = models.CharField(max_length=50, default=None)
+
+    def setInstructor(self, string):
+        self.courseInstructor = string
+
+    def setTA(self, string):
+        self.courseTA = string
 
     def __str__(self):
         return self.courseName
