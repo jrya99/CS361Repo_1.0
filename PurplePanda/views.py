@@ -13,7 +13,7 @@ class Login(View):
         bad_password = False
         try:
             x = MyUser.objects.get(name=request.POST['name'])
-        except x.DoesNotExist:
+        except MyUser.DoesNotExist:
             return render(request, "../static/../templates/login.html", {"message": "Error: User doesn't exist"})
         bad_password = (x.password != request.POST["password"])
 
