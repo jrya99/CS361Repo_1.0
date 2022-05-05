@@ -40,7 +40,6 @@ class Courses(View):
 
 class DataView(View):
     def get(self, request):
-        print('hi4')
         x = list(MyUser.objects.all())
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
@@ -48,9 +47,7 @@ class DataView(View):
         return render(request, "viewuser.html", {'print': x, 'current': temp})
 
     def post(self, request):
-        print('hi3')
         search = request.POST.get('n')
-        print(search)
         try:
             user = MyUser.objects.get(name=search)
             MyUser.objects.filter(name=search).delete()
@@ -94,7 +91,17 @@ class ViewCourses(View):
         return render(request, "viewcourse.html", {"print": x})
 
     def post(self, request):
-        return render(request, "viewcourse.html", {})
+        search = request.POST.get('n')
+        search2 = request.POST.get('s')
+        try:
+            course = MyCourses.objects.get(courseName=search, courseSection=search2)
+            course.delete()
+        except MyCourses.DoesNotExist:
+            return HttpResponse("No such course")
+        x = list(MyCourses.objects.all())
+        if x is None:
+            return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
+        return render(request, "viewcourse.html", {"print": x})
 
 
 class CreateCourse(View):
@@ -103,12 +110,22 @@ class CreateCourse(View):
 
     def post(self, request):
         n = request.POST.get('name')
-        s = int(request.POST.get('section'))
+        s = request.POST.get('section')
         i = request.POST.get('instruct')
         t = request.POST.get('ta')
-        if n != '':
-            newCourse = MyCourses(courseName=n, courseSection=s, courseInstructor=i, courseTA=t)
-            newCourse.save()
+        try:
+            course = MyCourses.objects.get(courseName=n, courseSection=s)
+            return render(request,"createcourse.html", {"message":"Course Section already exists"})
+        except MyCourses.DoesNotExist:
+            if n != '' and s != '':
+                newCourse = MyCourses(courseName=n, courseSection=s, courseInstructor=i, courseTA=t)
+                if t == '':
+                    newCourse.setTA('TBA')
+                if i == '':
+                    newCourse.setInstructor('TBA')
+                newCourse.save()
+            else:
+                return render(request, "createcourse.html", {"message":"Course Name and Section fields cannot be empty"})
             x = list(MyCourses.objects.all())
             if x is None:
                 return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
