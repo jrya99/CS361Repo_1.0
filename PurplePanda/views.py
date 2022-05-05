@@ -109,4 +109,7 @@ class CreateCourse(View):
         if n != '':
             newCourse = MyCourses(courseName=n, courseSection=s, courseInstructor=i, courseTA=t)
             newCourse.save()
-            return redirect('viewcourse.html')
+            x = list(MyCourses.objects.all())
+            if x is None:
+                return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
+            return render(request,'viewcourse.html',{"print": x})
