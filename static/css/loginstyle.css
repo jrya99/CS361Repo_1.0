@@ -21,6 +21,10 @@ body {
 	border-style:none;
 }
 
+.pandasHome{
+	padding:25px;
+}
+
 .users{
 	padding:20px;
 	font-size:25px;
