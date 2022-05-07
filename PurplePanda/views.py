@@ -130,3 +130,44 @@ class CreateCourse(View):
             if x is None:
                 return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
             return render(request,'viewcourse.html',{"print": x})
+
+
+class Profile(View):
+    def get(self, request):
+        temp = request.session.get("name")
+        temp = MyUser.objects.get(name=temp)
+        return render(request, "profile.html", {'current': temp, 'message': ''})
+
+    def post(self, request):
+        n = request.POST.get('name')
+        x = request.POST.get('number')
+        y = request.POST.get('address')
+        if n!='':
+            try:
+                user = MyUser.objects.get(name=n)
+                temp = request.session.get("name")
+                temp = MyUser.objects.get(name=temp)
+                return render(request, 'profile.html', {'current': temp, 'message': "Username already exists"})
+            except MyUser.DoesNotExist:
+                temp = request.session.get("name")
+                temp = MyUser.objects.get(name=temp)
+                request.session.__setitem__('name', n)
+                temp.name = n
+                if x != '':
+                    temp.phoneNumber = x
+                if y != '':
+                    temp.address = y
+                temp.save()
+                return render(request, 'profile.html', {'current': temp, 'message': ''})
+        else:
+            temp = request.session.get("name")
+            temp = MyUser.objects.get(name=temp)
+
+            if x != '':
+                temp.phoneNumber = x
+            if y != '':
+                temp.address = y
+            temp.save()
+            return render(request, 'profile.html', {'current': temp, 'message': ''})
+
+
