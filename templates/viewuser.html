@@ -30,7 +30,7 @@
     <h1 class="header2">Users</h1>
 
     {% if current.role == "admin" or current.role == "Admin" %}
-        <a class="create" href="/createuser">Create New User</a>
+        <a class="btn btn-lg buttons" href="/createuser">Create New User</a>
     {% endif %}
     <div class="users">
     <div class="table">
@@ -56,7 +56,7 @@
                 <tr>
                     <td>Delete User: </td>
                     <td><input type="text" name="n"></td>
-                    <td><button type = "submit">Confirm Deletion</button></td>
+                    <td><button class="btn btn-lg buttons" type = "submit">Confirm Deletion</button></td>
                 </tr>
             </form>
             </table>
