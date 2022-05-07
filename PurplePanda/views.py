@@ -142,6 +142,7 @@ class Profile(View):
         n = request.POST.get('name')
         x = request.POST.get('number')
         y = request.POST.get('address')
+        p = request.POST.get('password')
         if n!='':
             try:
                 user = MyUser.objects.get(name=n)
@@ -153,6 +154,8 @@ class Profile(View):
                 temp = MyUser.objects.get(name=temp)
                 request.session.__setitem__('name', n)
                 temp.name = n
+                if p != '':
+                    temp.password = p
                 if x != '':
                     temp.phoneNumber = x
                 if y != '':
@@ -162,6 +165,9 @@ class Profile(View):
         else:
             temp = request.session.get("name")
             temp = MyUser.objects.get(name=temp)
+
+            if p != '':
+                temp.password = p
 
             if x != '':
                 temp.phoneNumber = x
