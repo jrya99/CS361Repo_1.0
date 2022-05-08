@@ -26,10 +26,11 @@ class MyUser(models.Model):
     def set_address(self, address):
         self.address = address
 
+
 class Assignments(models.Model):
     name = models.CharField(max_length=50)
     date = models.CharField(max_length=50)
-    assignments = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    assignments = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True)
 
     def set_name(self, name):
         self.name = name
@@ -42,6 +43,7 @@ class Assignments(models.Model):
 
     def __str__(self):
         return self.name, self.date, self.assignments
+
 
 class MyCourses(models.Model):
     courseName = models.CharField(max_length=20)
