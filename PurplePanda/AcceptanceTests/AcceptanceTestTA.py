@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.test import Client
-from PurplePanda.models import User
+from PurplePanda.models import MyUser
 from PurplePanda.assignment import Assignment
 
 
@@ -8,11 +8,11 @@ class AcceptanceTA(TestCase):
 
    def setUp(self):
         self.client = Client()
-        self.user1 = User.objects.create(name='Patrick', password='Star', role='TA',
+        self.user1 = MyUser.objects.create(name='Patrick', password='Star', role='TA',
                                          phoneNumber='2622622626', address='ChickFilA')
-        self.user2 = User.objects.create(name='Spongebob', password='Squarepants', role='TA',
+        self.user2 = MyUser.objects.create(name='Spongebob', password='Squarepants', role='TA',
                                          phoneNumber='1234567890', address='Wendys')
-        self.user3 = User.objects.create(name='Patrick', password='Stars', role='TA',
+        self.user3 = MyUser.objects.create(name='Patrick', password='Stars', role='TA',
                                          phoneNumber='2622622626', address='McDonalds')
         self.assignment1 = Assignments.objects.create(name='Homework 1', date='11/5')
         self.assignment2 = Assignments.objects.create(name='Homework 2', date='12/7')
