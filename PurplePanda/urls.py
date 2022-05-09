@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from PurplePanda.views import Login, Home, Courses, DataView, CreateUser, ViewCourses, CreateCourse, Profile, AssignInstructor
+from PurplePanda.views import Login, Home, Courses, DataView, CreateUser, ViewCourses, CreateCourse, Profile, AssignInstructor, AssignTA
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,6 @@ urlpatterns = [
     path('viewcourse/', ViewCourses.as_view(), name='viewcoures'),
     path('createcourse/', CreateCourse.as_view(), name='createcourse'),
     path('profile/', Profile.as_view(), name='profile'),
-    path('assigninstructor/', AssignInstructor.as_view(), name='assigninstructor')
+    path('assigninstructor/', AssignInstructor.as_view(), name='assigninstructor'),
+    path('assignta/', AssignTA.as_view(), name='assignta')
 ]

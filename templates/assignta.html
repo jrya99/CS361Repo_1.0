@@ -47,11 +47,11 @@
                 </td>
             </tr>
             <tr>
-                <td>Enter Instructor: </td>
+                <td>Enter TA: </td>
                 <td>
-                    <select name="instructor">
+                    <select name="ta">
                         {% for user in users %}
-                            {% if user.role == 'Instructor' or user.role == 'instructor' %}
+                            {% if user.role == 'Ta' or user.role == 'TA' or user.role == 'ta'%}
                                 <option value="{{ user.name }}">{{ user.name }}</option>
                             {% endif %}
                         {% endfor %}

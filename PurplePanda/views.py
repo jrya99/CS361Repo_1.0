@@ -9,7 +9,6 @@ class Login(View):
         return render(request, "../static/../templates/login.html", {})
 
     def post(self, request):
-        print('hi')
         bad_password = False
         try:
             x = MyUser.objects.get(name=request.POST['name'])
@@ -43,7 +42,6 @@ class DataView(View):
         x = list(MyUser.objects.all())
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
-        #print(temp.role)
         return render(request, "viewuser.html", {'print': x, 'current': temp})
 
     def post(self, request):
@@ -56,7 +54,6 @@ class DataView(View):
         x = list(MyUser.objects.all())
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
-        # print(temp.role)
         return render(request, "viewuser.html", {'print': x, 'current': temp})
 
 
@@ -204,3 +201,32 @@ class AssignInstructor(View):
                 return redirect("/viewcourse/")
 
         return render(request, 'assigninstructor.html', {'courses': all_courses, 'users': all_users, 'message': 'The section you entered doesnt exist in the course'})
+
+
+class AssignTA(View):
+    def get(self, request):
+        courses = MyCourses.objects.all()
+        users = MyUser.objects.all()
+        return render(request, 'assignta.html', {'courses': courses, 'users': users})
+
+    def post(self, request):
+        all_courses = MyCourses.objects.all()
+        all_users = MyUser.objects.all()
+
+        course = request.POST.get('course_name')
+        section = request.POST.get('section')
+        new_ta = request.POST.get('ta')
+
+        if section == '' or section is None:
+            return render(request, 'assignta.html', {'courses': all_courses, 'users': all_users,
+                                                             'message': 'You didnt enter in the course section'})
+
+        for x in all_courses:
+            if x.courseName == course and x.courseSection == section:
+                temp = MyCourses.objects.get(courseName=x.courseName, courseSection=x.courseSection)
+                temp.courseTA = new_ta
+                temp.save()
+                return redirect("/viewcourse/")
+
+        return render(request, 'assignta.html', {'courses': all_courses, 'users': all_users,
+                                                         'message': 'The section you entered doesnt exist in the course'})
