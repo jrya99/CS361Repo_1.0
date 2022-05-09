@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.test import Client
-from PurplePanda.models import MyUser
-from PurplePanda.assignment import Assignment
+from PurplePanda.models import MyUser, Assignments
+
 
 
 class AcceptanceTA(TestCase):
