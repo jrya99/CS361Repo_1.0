@@ -80,15 +80,17 @@ class CreateUser(View):
                 x = list(MyUser.objects.all())
                 temp = request.session.get("name")
                 temp = MyUser.objects.get(name=temp)
-                return render(request,'viewuser.html',{'print':x,'current':temp})
+                return redirect("/viewuser/")
 
 
 class ViewCourses(View):
     def get(self, request):
         x = list(MyCourses.objects.all())
+        temp = request.session.get("name")
+        temp = MyUser.objects.get(name=temp)
         if x is None:
-            return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
-        return render(request, "viewcourse.html", {"print": x})
+            return render(request, "viewcourse.html", {"print": "No Courses have been created yet!", "current": temp})
+        return render(request, "viewcourse.html", {"print": x, "current": temp})
 
     def post(self, request):
         search = request.POST.get('n')
@@ -115,7 +117,7 @@ class CreateCourse(View):
         t = request.POST.get('ta')
         try:
             course = MyCourses.objects.get(courseName=n, courseSection=s)
-            return render(request,"createcourse.html", {"message":"Course Section already exists"})
+            return render(request, "createcourse.html", {"message":"Course Section already exists"})
         except MyCourses.DoesNotExist:
             if n != '' and s != '':
                 newCourse = MyCourses(courseName=n, courseSection=s, courseInstructor=i, courseTA=t)
@@ -129,7 +131,7 @@ class CreateCourse(View):
             x = list(MyCourses.objects.all())
             if x is None:
                 return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
-            return render(request,'viewcourse.html',{"print": x})
+            return redirect("/viewcourse/")
 
 
 class Profile(View):
@@ -177,3 +179,29 @@ class Profile(View):
             return render(request, 'profile.html', {'current': temp, 'message': ''})
 
 
+class AssignInstructor(View):
+    def get(self, request):
+        courses = MyCourses.objects.all()
+        users = MyUser.objects.all()
+        return render(request, 'assigninstructor.html', {'courses': courses, 'users': users})
+
+    def post(self, request):
+        all_courses = MyCourses.objects.all()
+        all_users = MyUser.objects.all()
+
+        course = request.POST.get('course_name')
+        section = request.POST.get('section')
+        new_instruct = request.POST.get('instructor')
+
+        if section == '' or section is None:
+            return render(request, 'assigninstructor.html', {'courses': all_courses, 'users': all_users, 'message': 'You didnt enter in the course section'})
+
+        for x in all_courses:
+            if x.courseName == course and x.courseSection == section:
+                temp = MyCourses.objects.get(courseName=x.courseName, courseSection=x.courseSection)
+                temp.courseInstructor = new_instruct
+                temp.save()
+                #return render(request, 'viewcourse.html', {'print': all_courses})
+                return redirect("/viewcourse/")
+
+        return render(request, 'assigninstructor.html', {'courses': all_courses, 'users': all_users, 'message': 'The section you entered doesnt exist in the course'})

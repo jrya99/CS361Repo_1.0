@@ -27,8 +27,12 @@
     </nav>
 
     <h1 class="header2">Courses</h1>
+    {% if current.role == "admin" or current.role == "Admin" %}
+        <a class="btn btn-lg buttons" href="/createcourse">Create New Course</a>
+        <a class="btn btn-lg buttons" href="/assigninstructor">Assign Instructor to Course</a>
+        <a class="btn btn-lg buttons" href="/">Assign TA to Section</a>
+    {% endif %}
 
-    <a class="btn btn-lg buttons" href="/createcourse">Create New Course</a>
     <div class="users">
         <table class="loginTable">
                 <tr>
