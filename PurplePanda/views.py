@@ -201,7 +201,6 @@ class AssignInstructor(View):
                 temp = MyCourses.objects.get(courseName=x.courseName, courseSection=x.courseSection)
                 temp.courseInstructor = new_instruct
                 temp.save()
-                #return render(request, 'viewcourse.html', {'print': all_courses})
                 return redirect("/viewcourse/")
 
         return render(request, 'assigninstructor.html', {'courses': all_courses, 'users': all_users, 'message': 'The section you entered doesnt exist in the course'})
