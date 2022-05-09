@@ -1,14 +1,14 @@
 from django.test import TestCase
 from django.test import Client
-from PurplePanda.models import User
+from PurplePanda.models import MyUser
 
 
 class AcceptanceAdmin(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.user1 = User.objects.create(name='Patrick', password='Star', role='Administrator', phoneNumber='2622622626', address='ChickFilA')
-        self.user2 = User.objects.create(name='Sandy', password='Cheeks', role='TA', phoneNumber='1234567890', address='BikiniBottom')
+        self.user1 = MyUser.objects.create(name='Patrick', password='Star', role='Administrator', phoneNumber='2622622626', address='ChickFilA')
+        self.user2 = MyUser.objects.create(name='Sandy', password='Cheeks', role='TA', phoneNumber='1234567890', address='BikiniBottom')
 
     def test_valid_login(self):
         response = self.client.post('/', {'name': 'Patrick', 'password': 'Star', 'role': 'Administrator'})
