@@ -57,7 +57,6 @@ class DataView(View):
             temp = MyUser.objects.get(name=temp)
             return render(request, "viewuser.html", {'print': x, 'current': temp})
         elif "edit" in request.POST:
-            print('made it')
             n = request.POST.get('name')
             edit = request.POST.get('newname')
             address = request.POST.get('address')
@@ -76,7 +75,6 @@ class DataView(View):
                                 user.address = address
                             if p != '':
                                 user.password = p
-                            print('hi99')
                             user.save()
                             x = list(MyUser.objects.all())
                             temp = request.session.get("name")
