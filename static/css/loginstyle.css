@@ -53,6 +53,18 @@ tr,td{
 	font-size: 30px;
 }
 
+.borderless {
+	padding:100px;
+	margin-left: auto;
+  	margin-right: auto;
+	color: white;
+	font-size: 30px;
+}
+
+.borderless td{
+	border:none;
+}
+
 .loginbtn {
 	background-color: rebeccapurple;
   	border-color: white;
