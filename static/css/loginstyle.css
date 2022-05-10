@@ -36,7 +36,6 @@ body {
 	color:sandybrown;
 }
 
-
 p {
 	font-size:30px;
 	color:white;
@@ -57,6 +56,7 @@ tr,td{
 .loginbtn {
 	background-color: rebeccapurple;
   	border-color: white;
+	color:white;
 	border-style: solid;
 	font-family: Arial, sans-serif;
 	text-align: center;
@@ -64,6 +64,12 @@ tr,td{
 	font-size: 25px;
 	padding:20px;
 	width:180px;
+}
+
+.loginbtn:hover{
+	background-color: rgb(50,100,200);
+	color: white;
+	border-color:white;
 }
 
 .buttons{
@@ -76,35 +82,35 @@ tr,td{
 	font-weight: bold;
 	font-size: 20px;
 	padding:10px;
-	width:150px;
+	width:200px;
 }
 
 .buttons:hover{
-	background-color: rgb(255,193,7);
-	color: rgb(40,10,90);
-	border-color:rgb(255,193,7);
+	background-color: rgb(50,100,200);
+	color: white;
+	border-color:white;
 }
 
 .navbar{
 	background-color: white;
-	color: purple;
 	border-style:none;
-	font-weight: bold;
+	font-weight: bolder;
 	font-size: 30px;
-	padding:5px;
+	padding:20px;
 	font-family: serif, Georgia;
 }
 
-.navbar-nav{
-
+.nav-link{
+	color: rgb(40,10,90);
 }
 
-.alertMessage {
-	text-align:center;
-	color: rgb(255,193,7);
-	margin:auto;
-	margin-top:30px;
-	padding:10px;
+.nav-link:hover{
+	color: rgb(0,100,200);
+}
+
+.active{
+	color: rebeccapurple;
+	text-decoration: underline;
 }
 
 img {
