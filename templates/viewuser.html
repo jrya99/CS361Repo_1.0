@@ -50,6 +50,7 @@
                     <td>{{ i.address }}</td>
                 </tr>
             {% endfor %}
+            {% if current.role == "Admin" %}
             <form action="/viewuser/" method="post">
                 {% csrf_token %}
                 <tr>
@@ -58,6 +59,7 @@
                     <td><button class="btn btn-lg buttons" type = "submit" name="delete">Confirm Deletion</button></td>
                 </tr>
             </form>
+            {% endif %}
             <form action="/viewuser/" method="post">
                 {% csrf_token %}
                 {% if current.role == "admin" or current.role == "Admin" %}
