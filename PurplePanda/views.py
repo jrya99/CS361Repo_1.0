@@ -45,16 +45,53 @@ class DataView(View):
         return render(request, "viewuser.html", {'print': x, 'current': temp})
 
     def post(self, request):
-        search = request.POST.get('n')
-        try:
-            user = MyUser.objects.get(name=search)
-            MyUser.objects.filter(name=search).delete()
-        except MyUser.DoesNotExist:
-            return HttpResponse("No such user")
-        x = list(MyUser.objects.all())
-        temp = request.session.get("name")
-        temp = MyUser.objects.get(name=temp)
-        return render(request, "viewuser.html", {'print': x, 'current': temp})
+        if "delete" in request.POST:
+            search = request.POST.get('n')
+            try:
+                user = MyUser.objects.get(name=search)
+                MyUser.objects.filter(name=search).delete()
+            except MyUser.DoesNotExist:
+                return HttpResponse("No such user")
+            x = list(MyUser.objects.all())
+            temp = request.session.get("name")
+            temp = MyUser.objects.get(name=temp)
+            return render(request, "viewuser.html", {'print': x, 'current': temp})
+        elif "edit" in request.POST:
+            print('made it')
+            n = request.POST.get('name')
+            edit = request.POST.get('newname')
+            address = request.POST.get('address')
+            number = request.POST.get('number')
+            p = request.POST.get('password')
+            if n != '':
+                if edit != '':
+                    try:
+                        user2 = MyUser.objects.get(name=n)
+                        try:
+                            user = MyUser.objects.get(name=n)
+                            user.name = edit
+                            if number != '':
+                                user.phoneNumber = number
+                            if address != '':
+                                user.address = address
+                            if p != '':
+                                user.password = p
+                            print('hi99')
+                            user.save()
+                            x = list(MyUser.objects.all())
+                            temp = request.session.get("name")
+                            temp = MyUser.objects.get(name=temp)
+                            return render(request, "viewuser.html", {'print': x, 'current': temp})
+                        except MyUser.DoesNotExist:
+                            x = list(MyUser.objects.all())
+                            temp = request.session.get("name")
+                            temp = MyUser.objects.get(name=temp)
+                            return render(request, "viewuser.html", {'print': x, 'current': temp})
+                    except MyUser.DoesNotExist:
+                        x = list(MyUser.objects.all())
+                        temp = request.session.get("name")
+                        temp = MyUser.objects.get(name=temp)
+                        return render(request, "viewuser.html", {'print': x, 'current': temp})
 
 
 class CreateUser(View):

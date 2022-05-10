@@ -56,8 +56,28 @@
                 <tr>
                     <td>Delete User: </td>
                     <td><input type="text" name="n"></td>
-                    <td><button class="btn btn-lg buttons" type = "submit">Confirm Deletion</button></td>
+                    <td><button class="btn btn-lg buttons" type = "submit" name="delete">Confirm Deletion</button></td>
                 </tr>
+            </form>
+            <form action="/viewuser/" method="post">
+                {% csrf_token %}
+                {% if current.role == "admin" or current.role == "Admin" %}
+            <tr>
+                <td>Edit User: <br></td>
+                <td><input type="text" name="name"></td>
+
+                    <td>New Username: </td>
+                    <td><input type="text" name ="newname"></td>
+                    <td>New Password: </td>
+                    <td><input type="text" name ="password"></td>
+                    <td>New Phone Number: </td>
+                    <td><input type="text" name ="number"></td>
+                    <td>New Address: </td>
+                    <td><input type="text" name ="address"></td>
+            </tr>
+                <td><button class="btn btn-lg buttons" type = "submit" name="edit">Confirm Edit</button></td>
+
+                {% endif %}
             </form>
             </table>
         </div>
