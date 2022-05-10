@@ -49,6 +49,7 @@
                     <td>{{ i.courseTA }}</td>
                 </tr>
             {% endfor %}
+        {% if current.role == "Admin" %}
         <form action="/viewcourse/" method="post">
                 {% csrf_token %}
                 <tr>
@@ -58,6 +59,7 @@
                     <td><button class="btn btn-lg buttons" type = "submit">Confirm Deletion</button></td>
                 </tr>
             </form>
+        {% endif %}
         </table>
     </div>
 

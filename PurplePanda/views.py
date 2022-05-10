@@ -117,9 +117,19 @@ class CreateUser(View):
 
 class ViewCourses(View):
     def get(self, request):
-        x = list(MyCourses.objects.all())
+        print('viewcourses get')
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
+
+        if temp.role == "Admin":
+            x = list(MyCourses.objects.all())
+
+        elif temp.role == "TA":
+            x = list(MyCourses.objects.filter(courseTA=temp.name))
+
+        else:
+            x = list(MyCourses.objects.filter(courseInstructor=temp.name))
+
         if x is None:
             return render(request, "viewcourse.html", {"print": "No Courses have been created yet!", "current": temp})
         return render(request, "viewcourse.html", {"print": x, "current": temp})
@@ -132,10 +142,22 @@ class ViewCourses(View):
             course.delete()
         except MyCourses.DoesNotExist:
             return HttpResponse("No such course")
-        x = list(MyCourses.objects.all())
+        temp = request.session.get("name")
+        temp = MyUser.objects.get(name=temp)
+        if temp.role == "Admin" or "admin":
+            x = list(MyCourses.objects.all())
+            print(x)
+        elif temp.role == "ta" or "TA":
+            x = list(MyCourses.objects.all().filter(courseTA=temp.name))
+            print(x)
+
+        else:
+            x = list(MyCourses.objects.all().filter(courseInstructor=temp.name))
+            print(x)
+
         if x is None:
-            return render(request, "viewcourse.html", {"print": "No Courses have been created yet!"})
-        return render(request, "viewcourse.html", {"print": x})
+            return render(request, "viewcourse.html", {"print": "No Courses have been created yet!", "current": temp})
+        return render(request, "viewcourse.html", {"print": x, "current": temp})
 
 
 class CreateCourse(View):
