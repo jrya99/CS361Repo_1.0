@@ -1,12 +1,13 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang = en>
+<html lang="en">
 <head>
-<meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Users</title>
     <meta name="viewport" content="width=device-width">
-    <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{% static 'css/loginstyle.css' %}" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,22 +17,41 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    <a class="nav-link" href="/home">Home</a>
                     <a class="nav-link" href="/profile">Profile</a>
                     <a class="nav-link" href= "/viewcourse">Courses</a>
                     <a class="nav-link" href="/viewuser">Users</a>
-                    <a class="nav-link" href="/viewmessage">Messages</a>
+                    <a class="nav-link active" href="/viewmessage">Messages</a>
                     <a class="nav-link" href= "/">Logout</a>
-
                 </div>
             </div>
         </div>
     </nav>
 
-    <p class="pandasHome">
-        Home of the Purple Pandas<img src= "/static/Images/PandaImage.jpg" alt="purple panda" style="width:400px">
-    </p>
+    <h1 class="header2">Messages</h1>
+    <a class="btn btn-lg buttons" href="/sendmessage">Send Message</a>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <div class="users">
+        <div class="table">
+            <table class="loginTable">
+                <tr>
+                    <td>From: </td>
+                    <td>Subject: </td>
+                </tr>
+                {% for i in print %}
+                    {% if current.name == i.receiver %}
+                <tr>
+                    <td>{{ i.sender }} </td>
+                    <td>{{ i.subject }}</td>
+                    <td>
+                        <a href="/openmessage">View<script>localStorage.setItem('objectToPass', {{ i }})</script></a>
+                    </td>
+                </tr>
+                    {% endif %}
+            {% endfor %}
+            </table>
+        </div>
+    </div>
 </body>
 </html>

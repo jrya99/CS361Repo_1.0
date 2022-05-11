@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from PurplePanda.models import MyUser, MyCourses
+from PurplePanda.models import MyUser, MyCourses, UserMessages
 from django.shortcuts import HttpResponse
 
 
@@ -230,3 +230,41 @@ class AssignTA(View):
 
         return render(request, 'assignta.html', {'courses': all_courses, 'users': all_users,
                                                          'message': 'The section you entered doesnt exist in the course'})
+
+
+class ViewMessage(View):
+    def get(self, request):
+        x = list(UserMessages.objects.all())
+        temp = request.session.get("name")
+        temp = MyUser.objects.get(name=temp)
+        return render(request, 'viewmessage.html', {'print': x, 'current': temp})
+
+    def post(self, request):
+        x = list(UserMessages.objects.all())
+        temp = request.session.get("name")
+        temp = MyUser.objects.get(name=temp)
+        return render(request, 'viewmessage.html', {'print': x, 'current': temp})
+
+
+class OpenMessage(View):
+    def get(self, request):
+        return render(request, 'openmessage.html', {})
+
+
+class SendMessage(View):
+    def get(self, request):
+        return render(request, 'sendmessage.html', {})
+
+    def post(self, request):
+        receiver = request.POST.get('receiver')
+        subject = request.POST.get('subject')
+        body = request.POST.get('body')
+        if receiver is None or subject is None:
+            return render(request, 'sendmessage.html', {{ 'message': 'You cannot leave receiver or subject blank'}})
+
+        temp = request.session.get("name")
+        temp = MyUser.objects.get(name=temp)
+        get_receiver = MyUser.objects.get(name=receiver)
+        new_message = UserMessages(sender=temp, receiver=get_receiver, subject=subject, body=body, read=False)
+        new_message.save()
+        return redirect("/viewmessage/")
