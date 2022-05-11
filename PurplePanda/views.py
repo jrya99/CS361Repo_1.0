@@ -90,7 +90,10 @@ class DataView(View):
                         temp = request.session.get("name")
                         temp = MyUser.objects.get(name=temp)
                         return render(request, "viewuser.html", {'print': x, 'current': temp})
-
+            x = list(MyUser.objects.all())
+            temp = request.session.get("name")
+            temp = MyUser.objects.get(name=temp)
+            return render(request, "viewuser.html", {'print': x, 'current': temp})
 
 class CreateUser(View):
     def get(self, request):
