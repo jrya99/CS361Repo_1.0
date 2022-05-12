@@ -12,7 +12,7 @@
 .header2{
 	alignment: left;
 	color:white;
-	padding:20px;
+	padding:40px;
 	font-family: serif, Georgia;
 }
 
@@ -21,7 +21,7 @@ body {
 }
 
 .pandasHome{
-	padding:25px;
+	padding:40px;
 }
 
 .users{
@@ -125,12 +125,18 @@ tr,td{
 	text-decoration: underline;
 }
 
-img {
-  border-color: white;
-  display: block;
-  border-style:solid;
-  margin-left: auto;
-  margin-right: auto;
+.pandaImg{
+	margin-left: auto;
+	margin-right: auto;
+	display:block;
+	padding:15px;
+	background:transparent;
+}
+.pandaVideo{
+	margin-left: auto;
+	margin-right: auto;
+	padding:15px;
+	display:block;
 }
 
 .errorMessage {
