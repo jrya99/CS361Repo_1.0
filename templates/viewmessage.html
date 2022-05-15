@@ -39,15 +39,14 @@
                 <tr>
                     <td>From: </td>
                     <td>Subject: </td>
+                    <td>Body: </td>
                 </tr>
 
                 {% for i in print %}
                 <tr>
                     <td>{{ i.sender }} </td>
                     <td>{{ i.subject }}</td>
-                    <td>
-                        <a href="/openmessage">View<script>localStorage.setItem('objectToPass', {{ i }})</script></a>
-                    </td>
+                    <td>{{ i.body }}</td>
                 </tr>
                 {% endfor %}
                 <div class="errorMessage"><tr> {{ message }} </tr></div>

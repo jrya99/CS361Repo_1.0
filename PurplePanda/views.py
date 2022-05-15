@@ -315,11 +315,6 @@ class ViewMessage(View):
         return render(request, 'viewmessage.html', {'print': x, 'message': ''})
 
 
-class OpenMessage(View):
-    def get(self, request):
-        return render(request, 'openmessage.html', {})
-
-
 class SendMessage(View):
     def get(self, request):
         return render(request, 'sendmessage.html', {})
