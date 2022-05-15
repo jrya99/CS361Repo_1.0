@@ -294,16 +294,25 @@ class AssignTA(View):
 
 class ViewMessage(View):
     def get(self, request):
-        x = list(UserMessages.objects.all())
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
-        return render(request, 'viewmessage.html', {'print': x, 'current': temp})
+        x = list(UserMessages.objects.all().filter(receiver=temp.name))
+        print(x)
+        if not x:
+            print('hey')
+            return render(request, 'viewmessage.html', {'print': '', 'message': 'No Messages!'})
+
+        return render(request, 'viewmessage.html', {'print': x, 'message': ''})
 
     def post(self, request):
-        x = list(UserMessages.objects.all())
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
-        return render(request, 'viewmessage.html', {'print': x, 'current': temp})
+        x = list(UserMessages.objects.all().filter(receiver=temp))
+        print(x.sender)
+        if x is None:
+            return render(request, 'viewmessage.html', {'print': '', 'message': ''})
+
+        return render(request, 'viewmessage.html', {'print': x, 'message': ''})
 
 
 class OpenMessage(View):
@@ -325,6 +334,6 @@ class SendMessage(View):
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
         get_receiver = MyUser.objects.get(name=receiver)
-        new_message = UserMessages(sender=temp, receiver=get_receiver, subject=subject, body=body, read=False)
+        new_message = UserMessages(sender=temp.name, receiver=get_receiver.name, subject=subject, body=body, read=False)
         new_message.save()
         return redirect("/viewmessage/")
