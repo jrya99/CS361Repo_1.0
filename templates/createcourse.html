@@ -29,7 +29,7 @@
 
     <form action="" method="post">
         {% csrf_token %}
-        <div class="table">
+        <div class="table loginTable">
                 <table class="loginTable">
                     <tr>
                         <td>Course Name: </td>
@@ -47,13 +47,17 @@
                         <td>Course TA: </td>
                         <td><input type="text" name="ta"></td>
                     </tr>
+                    <tr>
+                        <td>
+                            <a class="anchorPadding buttonsCenter" href="/viewcourse"><input class="btn btn-lg buttons" type="submit" value="Create"></a>
+                            <div class="anchorPadding "><input class="btn btn-lg buttons" type="button" onclick="history.back()" value="Cancel"></div>
+                        </td>
+                    </tr>
                 </table>
-            <a href="/viewcourse"><input class="btn btn-lg buttons" type="submit" value="Create"></a>
-            <input class="btn btn-lg buttons" type="button" onclick="history.back()" value="Cancel">
         </div>
     </form>
 
-    <div class="alertMessage">
+    <div class="errorMessage">
         {{ message }}
     </div>
 
