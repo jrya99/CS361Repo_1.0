@@ -331,4 +331,4 @@ class SendMessage(View):
         get_receiver = MyUser.objects.get(name=receiver)
         new_message = UserMessages(sender=temp.name, receiver=get_receiver.name, subject=subject, body=body, read=False)
         new_message.save()
-        return redirect("/viewmessage/")
+        return redirect("/viewmessage/") #test
