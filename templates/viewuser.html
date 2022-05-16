@@ -31,7 +31,7 @@
     <h1 class="header2">Users</h1>
 
     {% if current.role == "admin" or current.role == "Admin" %}
-        <a class="btn btn-lg buttons" href="/createuser">Create New User</a>
+        <div class="anchorPadding"><a class="btn btn-lg buttons" href="/createuser">Create New User</a></div>
     {% endif %}
     <div class="users">
     <table class="table loginTable">
