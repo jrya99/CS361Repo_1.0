@@ -62,8 +62,8 @@ class MyCourses(models.Model):
 
 
 class UserMessages(models.Model):
-    sender = models.ForeignKey(MyUser, related_name="sender", on_delete=models.CASCADE)
-    receiver = models.ForeignKey(MyUser, related_name="receiver", on_delete=models.CASCADE)
+    sender = models.CharField(max_length=20)
+    receiver = models.CharField(max_length=20)
     subject = models.CharField(max_length=50)
     body = models.TextField(verbose_name='body')
     read = models.BooleanField(default=False)
