@@ -30,7 +30,7 @@ class AcceptanceAdmin(TestCase):
 
         for i in response.context['users']:
             all_users.update(str(i))
-        self.assertEqual(all_users, {'name': self.user2.username, 'password': None, 'role': 'TA'})
+        self.assertEqual(all_users, {'name': self.user2.name, 'password': None, 'role': 'TA'})
 
     def test__invalid_create_user(self):
         response = self.client.post('/', {'name': 'Patrick', 'password': 'Star', 'role': 'Administrator'})
