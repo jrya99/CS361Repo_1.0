@@ -297,9 +297,7 @@ class ViewMessage(View):
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
         x = list(UserMessages.objects.all().filter(receiver=temp.name))
-        print(x)
         if not x:
-            print('hey')
             return render(request, 'viewmessage.html', {'print': '', 'message': 'No Messages!'})
 
         return render(request, 'viewmessage.html', {'print': x, 'message': ''})
@@ -308,7 +306,6 @@ class ViewMessage(View):
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
         x = list(UserMessages.objects.all().filter(receiver=temp))
-        print(x.sender)
         if x is None:
             return render(request, 'viewmessage.html', {'print': '', 'message': ''})
 
