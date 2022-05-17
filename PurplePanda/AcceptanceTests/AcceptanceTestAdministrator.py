@@ -31,7 +31,7 @@ class AcceptanceAdmin(TestCase):
 
     def test__invalid_create_user(self):
         response = self.client.post('/', {'name': 'Patrick', 'password': 'Star', 'role': 'Administrator'})
-        self.assertEqual(response.url, "/home")
+        self.assertEqual(response.url, "/home/")
 
         response = self.client.post('/create_users/', {'name': self.user2.username, 'password': None, 'role': 'TA'})
 
