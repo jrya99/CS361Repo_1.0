@@ -10,6 +10,7 @@ class AcceptanceAdmin(TestCase):
         self.user1 = MyUser.objects.create(name='Patrick', password='Star', role='Administrator', phoneNumber='2622622626', address='ChickFilA')
         self.user2 = MyUser.objects.create(name='Sandy', password='Cheeks', role='TA', phoneNumber='1234567890', address='BikiniBottom')
         self.course1 = MyCourses.objects.create(courseName='CS361', courseSection='101')
+
     def test_valid_login(self):
         response = self.client.post('/', {'name': 'Patrick', 'password': 'Star', 'role': 'Administrator'})
         self.assertEqual(response.url, "/home/")
@@ -55,5 +56,6 @@ class AcceptanceAdmin(TestCase):
         self.assertEqual(response.context['message'], "invalid username, password, or role")
 
 
-        #delete course and delete section
+
+
 
