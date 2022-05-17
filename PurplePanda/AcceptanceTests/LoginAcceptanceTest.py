@@ -1,4 +1,4 @@
-rom django.test import TestCase
+from django.test import TestCase
 from django.test import Client
 from PurplePanda.models import MyUser
 
