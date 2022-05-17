@@ -6,7 +6,7 @@ from PurplePanda.models import MyUser, Assignments
 
 class AcceptanceTA(TestCase):
 
-   def setUp(self):
+    def setUp(self):
         self.client = Client()
         self.user1 = MyUser.objects.create(name='Patrick', password='Star', role='TA',
                                          phoneNumber='2622622626', address='ChickFilA')
