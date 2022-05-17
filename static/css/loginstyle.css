@@ -89,6 +89,11 @@ tr,td{
 	padding:20px 0px 20px 40px;
 }
 
+.buttomButtons{
+	display: inline-block;
+	padding:20px 40px 20px 0px;
+}
+
 .buttons{
 	background-color: rebeccapurple;
 	border-color:white;
