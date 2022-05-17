@@ -13,7 +13,6 @@ class TestLogin(TestCase):
                                            phoneNumber='1234567890', address='Wendys')
         self.user3 = MyUser.objects.create(name='Mister', password='Krabs', role='Instructor',
                                            phoneNumber='2622622626', address='McDonalds')
- 
 
     def test_valid_login1(self):
         response = self.client.post('/', {'name': 'Patrick', 'password': 'Star'})

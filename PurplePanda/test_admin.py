@@ -1,4 +1,4 @@
-from PurplePanda.parent import Parent
+from PurplePanda.test_parent import Parent
 
 
 class Admin(Parent):
