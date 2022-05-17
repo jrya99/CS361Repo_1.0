@@ -319,7 +319,7 @@ class SendMessage(View):
         receiver = request.POST.get('receiver')
         subject = request.POST.get('subject')
         body = request.POST.get('body')
-        if receiver is "" or subject is "":
+        if receiver == "" or subject == "":
             return render(request, 'sendmessage.html', { 'message': 'You cannot leave receiver or subject blank'})
 
         temp = request.session.get("name")
