@@ -3,6 +3,7 @@ from django.test import Client
 from PurplePanda.models import MyUser, Assignments
 
 class TestAcceptanceInstructor(TestCase):
+
     def setup(self):
         self.client = Client()
         self.user1 = MyUser.objects.create(name='Patrick', password='Star', role='Instructor',
@@ -12,8 +13,6 @@ class TestAcceptanceInstructor(TestCase):
         self.user3 = MyUser.objects.create(name='Patrick', password='Stars', role='Instructor',
                                          phoneNumber='2622622626', address='McDonalds')
         self.a1 = Assignments.objects.create("HW1","12/25")
-
-
 
         self.assignment1 = Assignments.objects.create(name='Homework 1', date='11/5')
         self.assignment2 = Assignments.objects.create(name='Homework 2', date='12/7')
