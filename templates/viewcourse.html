@@ -28,13 +28,16 @@
     </nav>
 
     <h1 class="header2">Courses</h1>
-    {% if current.role == "admin" or current.role == "Admin" %}
+    {% if current.role == "admin" or current.role == "Admin"%}
 
-    <div class="anchorPadding"><a class="btn btn-lg buttons " href="/createcourse">Create New Course</a></div>
-    <div class="anchorPadding"><a class="btn btn-lg buttons " href="/assigninstructor">Assign Instructor to Course</a></div>
-    <div class="anchorPadding"><a class="btn btn-lg buttons " href="/assignta">Assign TA to Section</a></div>
-
+        <div class="anchorPadding"><a class="btn btn-lg buttons " href="/createcourse">Create New Course</a></div>
+        <div class="anchorPadding"><a class="btn btn-lg buttons " href="/assigninstructor">Assign Instructor to Course</a></div>
+        <div class="anchorPadding"><a class="btn btn-lg buttons " href="/assignta">Assign TA to Section</a></div>
     {% endif %}
+    {% if current.role == 'instructor' or current.role == 'Instructor' %}
+        <div class="anchorPadding"><a class="btn btn-lg buttons " href="/assignta">Assign TA to Section</a></div>
+    {% endif %}
+
 
     <div class="users tableAdjust">
         <table class=" table loginTable">
