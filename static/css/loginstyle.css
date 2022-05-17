@@ -26,6 +26,10 @@ body {
 	color:white;
 }
 
+.deleteTable{
+	padding-right: 140px;
+}
+
 .create{
 	padding:20px;
 	font-size:25px;

@@ -52,11 +52,21 @@
             {% if current.role == "Admin" %}
             <form action="/viewuser/" method="post">
                 {% csrf_token %}
-                <tr>
-                    <td>Delete User: </td>
-                    <td><input type="text" name="n"></td>
-                    <td><button class="btn btn-lg buttons" type = "submit" name="delete">Confirm Deletion</button></td>
-                </tr>
+                <table class="table loginTable">
+                    <tr>
+                        <td>
+                           <table class="borderless">
+                                <tr>
+                                    <td class="deleteTable">Delete User: </td>
+                                    <td><input type="text" name="n"></td>
+                                </tr>
+                                <tr>
+                                    <td><button class="btn btn-lg buttons" type = "submit" name="delete">Confirm Deletion</button></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </form>
 
             {% endif %}

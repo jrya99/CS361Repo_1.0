@@ -32,26 +32,26 @@
     <form action="" method="post">
         {% csrf_token %}
     <div class="users">
-        <div class="table">
-            <table class="loginTable">
-                <tr>
-                    <td>To: </td>
-                    <td><input type="text" name="receiver"></td>
-                </tr>
-                <tr>
-                    <td>Subject: </td>
-                    <td><input type="text" name="subject"></td>
-                </tr>
-                <tr>
-                    <td>Body: </td>
-                    <td><input type="text" name="body"></td>
-                </tr>
-            </table>
-            <a href="/viewmessage"><input class="btn btn-lg buttons" type="submit" value="Send"></a>
-            <a class="btn btn-lg buttons" href="/viewmessage">Cancel</a>
-
-
-        </div>
+        <table class="loginTable borderless">
+            <tr>
+                <td>To: </td>
+                <td><input type="text" name="receiver"></td>
+            </tr>
+            <tr>
+                <td>Subject: </td>
+                <td><input type="text" name="subject"></td>
+            </tr>
+            <tr>
+                <td>Body: </td>
+                <td><input type="text" name="body"></td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="buttomButtons href="/viewmessage"><input class="btn btn-lg buttons" type="submit" value="Send"></a>
+                    <div class="buttomButtons "><input class="btn btn-lg buttons" type="button" onclick="history.back()" value="Cancel"></div>
+                </td>
+            </tr>
+        </table>
     </div>
     </form>
     <div class="errorMessage">

@@ -27,44 +27,49 @@
         </div>
     </nav>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="table">
-                <table class="loginTable">
-                    <tr>
-                        <td>Name: </td>
-                        <td><input type="text" name="name"></td>
-                    </tr>
-                    <tr>
-                        <td>Password: </td>
-                        <td><input type="text" name="password"></td>
-                    </tr>
-                    <tr>
-                        <td>Phone Number: </td>
-                        <td><input type="text" name="phone"></td>
-                    </tr>
-                    <tr>
-                        <td>Address: </td>
-                        <td><input type="text" name="address"></td>
-                    </tr>
-                    <tr>
-                        <td>Role: </td>
+    <div class="tableAdjust">
+        <form action="" method="post">
+            {% csrf_token %}
+
+                    <table class="loginTable">
+                        <tr>
+                            <td>Name: </td>
+                            <td><input type="text" name="name"></td>
+                        </tr>
+                        <tr>
+                            <td>Password: </td>
+                            <td><input type="text" name="password"></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number: </td>
+                            <td><input type="text" name="phone"></td>
+                        </tr>
+                        <tr>
+                            <td>Address: </td>
+                            <td><input type="text" name="address"></td>
+                        </tr>
+                        <tr>
+                            <td>Role: </td>
+                                <td>
+                                    <input id= "Admin" type="radio" name="role" value="Admin">
+                                    <label for="Admin">Admin</label>
+                                    <br>
+                                    <input id= "instructor" type="radio" name="role" value="Instructor">
+                                    <label for="instructor">Instructor</label>
+                                    <br>
+                                    <input id= "TA" type="radio" name="role" value="TA">
+                                    <label for="TA">TA</label>
+                             </td>
+                        </tr>
+                        <tr>
                             <td>
-                                <input id= "Admin" type="radio" name="role" value="Admin">
-                                <label for="Admin">Admin</label>
-                                <br>
-                                <input id= "instructor" type="radio" name="role" value="Instructor">
-                                <label for="instructor">Instructor</label>
-                                <br>
-                                <input id= "TA" type="radio" name="role" value="TA">
-                                <label for="TA">TA</label>
-                         </td>
-                    </tr>
-                </table>
-            <a href="/viewuser"><input class="btn btn-lg buttons" type="submit" value="Create"></a>
-            <input class="btn btn-lg buttons" type="button" onclick="history.back()" value="Cancel">
-        </div>
-    </form>
+                                <a class="buttomButtons href="/viewuser"><input class="btn btn-lg buttons" type="submit" value="Create"></a>
+                                <div class="buttomButtons "><input class="btn btn-lg buttons" type="button" onclick="history.back()" value="Cancel"></div>
+                            </td>
+                        </tr>
+                    </table>
+        </form>
+    </div>
 
     <div class="errorMessage">
         {{ message }}
