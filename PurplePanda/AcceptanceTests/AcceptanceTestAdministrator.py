@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.test import Client
-from PurplePanda.models import MyUser
+from PurplePanda.models import MyUser, MyCourses
 
 
 class AcceptanceAdmin(TestCase):
@@ -9,6 +9,9 @@ class AcceptanceAdmin(TestCase):
         self.client = Client()
         self.user1 = MyUser.objects.create(name='Patrick', password='Star', role='Administrator', phoneNumber='2622622626', address='ChickFilA')
         self.user2 = MyUser.objects.create(name='Sandy', password='Cheeks', role='TA', phoneNumber='1234567890', address='BikiniBottom')
+        self.user3 = MyUser.objects.create(name='Mrs.Puff', password='boat', role='Instructor', phoneNumber='1234567890', address='BikiniBottom')
+        self.user4 = MyUser.objects.create(name='Flats', password='beatyouup', role='TA', phoneNumber='1234567890', address='BikiniBottom')
+        self.course1 = MyCourses.objects.create(courseName='Boating Class', courseSection='101', courseInstructor='Mrs.Puff', courseTA='Flats')
 
     def test_valid_login(self):
         response = self.client.post('/', {'name': 'Patrick', 'password': 'Star', 'role': 'Administrator'})
@@ -37,5 +40,7 @@ class AcceptanceAdmin(TestCase):
 
         self.assertEqual(response.context['message'], "invalid username, password, or role")
 
-        #delete course and delete section
+    def test__delete_course(self):
+        response = self.client.post('/viewcourse/', {'n': 'Boating Class', 's': '101'})
+        self.assertEqual(MyCourses.objects.all(), '<QuerySet []>')
 

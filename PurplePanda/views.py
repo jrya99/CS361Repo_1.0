@@ -120,7 +120,6 @@ class CreateUser(View):
 
 class ViewCourses(View):
     def get(self, request):
-        print('viewcourses get')
         temp = request.session.get("name")
         temp = MyUser.objects.get(name=temp)
 
