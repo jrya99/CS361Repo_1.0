@@ -20,12 +20,8 @@ body {
 	background-color: rgb(40,10,90);
 }
 
-.pandasHome{
+.tableAdjust{
 	padding:40px;
-}
-
-.users{
-	padding:20px;
 	font-size:25px;
 	color:white;
 }

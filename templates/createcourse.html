@@ -27,35 +27,37 @@
         </div>
     </nav>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="table loginTable">
-                <table class="loginTable">
-                    <tr>
-                        <td>Course Name: </td>
-                        <td><input type="text" name="name"></td>
-                    </tr>
-                    <tr>
-                        <td>Course Section: </td>
-                        <td><input type="text" name="section"></td>
-                    </tr>
-                    <tr>
-                        <td>Course Instructor: </td>
-                        <td><input type="text" name="instruct"></td>
-                    </tr>
-                    <tr>
-                        <td>Course TA: </td>
-                        <td><input type="text" name="ta"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a class="anchorPadding buttonsCenter" href="/viewcourse"><input class="btn btn-lg buttons" type="submit" value="Create"></a>
-                            <div class="anchorPadding "><input class="btn btn-lg buttons" type="button" onclick="history.back()" value="Cancel"></div>
-                        </td>
-                    </tr>
-                </table>
-        </div>
-    </form>
+    <div class="tableAdjust">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="table loginTable ">
+                    <table class="loginTable">
+                        <tr>
+                            <td>Course Name: </td>
+                            <td><input type="text" name="name"></td>
+                        </tr>
+                        <tr>
+                            <td>Course Section: </td>
+                            <td><input type="text" name="section"></td>
+                        </tr>
+                        <tr>
+                            <td>Course Instructor: </td>
+                            <td><input type="text" name="instruct"></td>
+                        </tr>
+                        <tr>
+                            <td>Course TA: </td>
+                            <td><input type="text" name="ta"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="anchorPadding buttonsCenter" href="/viewcourse"><input class="btn btn-lg buttons" type="submit" value="Create"></a>
+                                <div class="anchorPadding "><input class="btn btn-lg buttons" type="button" onclick="history.back()" value="Cancel"></div>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </form>
+    </div>
 
     <div class="errorMessage">
         {{ message }}
