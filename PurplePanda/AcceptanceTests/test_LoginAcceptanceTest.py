@@ -18,7 +18,7 @@ class TestLogin(TestCase):
 
     def test_valid_login1(self):
         response = self.client.post('/', {'name': 'Patrick', 'password': 'Star'})
-        self.assertEqual(response.url, "/home")
+        self.assertEqual(response.url, "/home/")
 
     def test_valid_invalid_login(self):
         response = self.client.post('/', {"name": "Spongebob", "password": "Star"})
